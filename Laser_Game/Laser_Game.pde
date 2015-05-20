@@ -1,6 +1,7 @@
 //area for floats and int's
 int x = 10;
-int y = 0;
+int y = 30;
+int rad = 2;
 float px = 0;
 float py = 0;
 float rx = 0;
@@ -8,6 +9,8 @@ float ry = 0;
 float a = 0;
 float b = 0;
 float c = 0;
+int xDir = 1;
+int yDir = 1;
 void setup() {
   size(800, 800); //size of screen
   background(40);
@@ -28,20 +31,30 @@ void mousePressed() {
 void mouseReleased() {
   rx = mouseX;
   ry = mouseY;
+  rx = px;
+  ry = py;
 }//mouse released ends
 
 // repeats every frame
 void draw() {
+
   a = (ry - py);
   b = (rx - px);
   c = (a/b); // calculates slope of points
-stroke(255);
-line(px,py,rx,ry);
+  stroke(255);
+  println(px);
+  if (px>0 && py>0 && rx>0 && ry>0) { // stops mirror from drawing at 0,0 to first click
+    line(px, py, rx, ry);//draws mirror
+  } // end of if
+  // if (x > c-rad || x < rad){
+  //   xDir *= -1;
+  // }
+  // if (y > c-rad || x < rad){
+  //   yDir *= -1;
+  // }
   stroke(255, 0, 0);
-  ellipse(x, 30, 2, 2); //draws laser
+  ellipse(x, y, rad, rad); //draws laser
   x=x+2; // moves laser
-  // px = mouseX;
-  // py = mouseY;
-  // rx = mouseX;
-  // ry = mouseY;
+  y= y+1;
+  //how do i get it to reflect off every poin on a line.
 } //void draw ends
