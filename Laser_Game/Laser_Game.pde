@@ -2,8 +2,8 @@
 //laser_Game
 
 //area for floats and int's
-int x = 10;
-int y = 30;
+float x = 10;
+float y = 60;
 int rad = 1;
 // both p's hold press x and y of mouse
 float px = 0; 
@@ -18,6 +18,8 @@ float b = 0;
 int xDir = 1;
 int yDir = 1;
 int sSize = 50;
+float eX = 50;
+float eY = 150;
 ;
 void setup() {
   size(800, 800); //size of screen
@@ -25,7 +27,7 @@ void setup() {
   // changes origin of graph
   translate(0, height); 
   scale(1, -1);
-  ellipse(sX,sY,sX,sY);
+  ellipse(eX,eY,sSize,sSize);
 } //void setup ends
 
 //point of mouse pressed
@@ -46,7 +48,9 @@ void mouseReleased() {
 
 // repeats every frame
 void draw() {
-  
+  if(x == eX && y == eY){
+   noLoop();
+  }
   b = (y - (m*x));
   dY = (ry - py);
   dX = (rx - px);
@@ -56,15 +60,15 @@ void draw() {
   }
   stroke(255);
   if (px>0 && py>0 && rx>0 && ry>0) { // stops mirror from drawing at 0,0 to first click
-    strokeWeight(2);
-
+    strokeWeight(3); //thickness of line
+stroke(#A0FDFF);
     line(px, py, rx, ry);//draws mirror
   } // end of if
-
+strokeWeight(2);//thickness of laser
   stroke(255, 0, 0);
   ellipse(x, y, rad, rad); //draws laser
   
   x=x+2; // moves laser
-  y= y+1;
+  //y= y+1;
   //how do i get it to reflect off every poin on a line.
 } //void draw ends
