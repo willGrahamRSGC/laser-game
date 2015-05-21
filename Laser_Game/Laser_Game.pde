@@ -47,7 +47,7 @@ void mouseReleased() {
 
 // repeats every frame
 void draw() {
-  if (x == eX && y == eY) {
+  if (x == eX && y == eY) { // make work
     noLoop();
   }
 
@@ -60,11 +60,11 @@ void draw() {
   b = (pY - (m*pX));
   
   rS=(m*x)+b;//how does this help
-  println("RS" + rS);
-
-  if (floor(y)==(floor(rS))) { // reflects laser
+println(floor(rS));
+println(floor(y));
+  if (floor(y) > floor(rS)-2 && floor(y) < floor(rS)+2) { // reflects laser
     ellipse (400, 400, 100, 100);
-  }
+  } 
   stroke(255);
   if (pX>0 && pY>0 && rX>0 && rY>0) { // stops mirror from drawing at 0,0 to first click
     strokeWeight(3); //thickness of line
@@ -75,7 +75,7 @@ void draw() {
   stroke(255, 0, 0);
   ellipse(x, y, rad, rad); //draws laser
 
-  x=x+2; // moves laser
+  x=x+1; // moves laser
   //y= y+1;
   //how do i get it to reflect off every poin on a line.
 } //void draw ends
