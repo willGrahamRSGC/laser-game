@@ -1,9 +1,10 @@
 //By WIll Graham
 //laser_Game
 
+//x=x+1 = x=x+speedX to make it go abckwards times by -1 or so on so that it changes to negative get thsi shit reflecting.
 //area for floats and int's
-float x = 10;
-float y = 60;
+float x = 0;
+float y = 0;
 int rad = 1;
 // both p's hold press x and y of mouse
 float pX = 0; 
@@ -21,6 +22,8 @@ float eY = 150;
 float rS = 0;
 
 void setup() {
+  x=10;
+  y=60;
   size(800, 800); //size of screen
   background(40);
   // changes origin of graph
@@ -58,12 +61,13 @@ void draw() {
   // println(dX);
   m = (dY/dX); // calculates slope of points
   b = (pY - (m*pX));
-  
+
   rS=(m*x)+b;//how does this help
-println(floor(rS));
-println(floor(y));
+  println(floor(rS));
+  println(floor(y));
   if (floor(y) > floor(rS)-2 && floor(y) < floor(rS)+2) { // reflects laser
-    ellipse (400, 400, 100, 100);
+    x = x*-2;
+    y=y*-1;
   } 
   stroke(255);
   if (pX>0 && pY>0 && rX>0 && rY>0) { // stops mirror from drawing at 0,0 to first click
@@ -76,6 +80,6 @@ println(floor(y));
   ellipse(x, y, rad, rad); //draws laser
 
   x=x+1; // moves laser
-  //y= y+1;
+  y= y+1;
   //how do i get it to reflect off every poin on a line.
 } //void draw ends
